@@ -1,7 +1,7 @@
 # cadechico
 
-A new Flutter project.
-
+Projeto de Flutter para o Mestrado em Informática Aplicada.
+Jogo interativo de turismo digital no estado de Pernambuco, Brasil.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
