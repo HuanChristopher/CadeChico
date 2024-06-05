@@ -44,7 +44,7 @@ class HomePageState extends State<Viagem01Page> {
         ),
       ),
       appBar: AppBar(
-        title: Text('VIAJAR', style: TextStyle(fontWeight: FontWeight.bold,)), 
+        title: Text('VIAJAR', style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
         
       ),
       body: Container( 
@@ -57,15 +57,6 @@ class HomePageState extends State<Viagem01Page> {
             Container(
             //height: MediaQuery.of(context).size.height,
             child: Image.asset('assets/imagens/mapa01.png', fit: BoxFit.cover)),
-  
-            
-            MaterialButton(
-                            
-                onPressed: () {
-                   Navigator.of(context).pushReplacementNamed('/recife');   
-                }, 
-                child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
-            ),
 
             Container(height: 60,),
             Row(
@@ -78,7 +69,7 @@ class HomePageState extends State<Viagem01Page> {
                   MaterialButton(
                              
                     onPressed: () {
-                     Navigator.of(context).pushReplacementNamed('/viagem01');   
+                     Navigator.of(context).pushReplacementNamed('/petrolina');   
                     }, 
                     child: Image.asset('assets/cidades/petrolina.png', fit: BoxFit.cover, width: 70, height: 50,), 
                   ),
@@ -94,7 +85,7 @@ class HomePageState extends State<Viagem01Page> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem01');   
+                                    Navigator.of(context).pushReplacementNamed('/salgueiro');   
                                 }, 
                                 child: Image.asset('assets/cidades/salgueiro.png', fit: BoxFit.cover, width: 70, height: 50,), 
                               ),
@@ -117,11 +108,26 @@ class HomePageState extends State<Viagem01Page> {
 
                   Text('Bonito', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
                 ],
+
+                
               ),
 
               
 
-              ],)
+              ],
+              
+            ),
+
+            Container(height: 60,),
+
+            MaterialButton(
+                            
+                onPressed: () {
+                   Navigator.of(context).pushReplacementNamed('/recife');   
+                }, 
+                child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
+            ),
+            
           ],
         ),
       ),

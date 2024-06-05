@@ -24,8 +24,8 @@ class HomePageState extends State<RecifePage> {
                 currentAccountPicture: ClipRRect(
                   borderRadius: BorderRadius.circular(40),
                   child: Image.asset('assets/imagens/huan.jpg'),),
-                  accountName: Text('Huan Lima'), 
-                  accountEmail: Text('huan.lima@ufrpe.br')),
+                  accountName: Text('Huan Lima', style: TextStyle(color: Colors.black),), 
+                  accountEmail: Text('huan.lima@ufrpe.br',style: TextStyle(color: Colors.black))),
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Inicio'),
@@ -45,8 +45,9 @@ class HomePageState extends State<RecifePage> {
             )
         ),
       ),
+      
       appBar: AppBar(
-        title: Text('NO MUNICÍPIO DE', style: TextStyle(fontWeight: FontWeight.bold,)), 
+        title: Text('RECIFE', style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255), fontWeight: FontWeight.bold)), 
         
       ),
       body: Container( 
@@ -60,23 +61,14 @@ class HomePageState extends State<RecifePage> {
             //height: MediaQuery.of(context).size.height,
             child: Image.asset('assets/imagens/01.recife01.png', fit: BoxFit.cover)),
   
-            Text('RECIFE', 
-            style: TextStyle(
-            fontSize: 40,
-            //fontWeight: FontWeight.bold,
-            foreground: Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 6
-          ..color = Colors.blue[700]!
-          ),
-          ),
-            ElevatedButton(
-                            
-                            onPressed: () {
-                                Navigator.of(context).pushReplacementNamed('/recifeData');   
-                            }, 
-                            child: Image.asset('assets/icones/exclamation.png', fit: BoxFit.cover, width: 50, height: 50,), 
-                          ),
+            Text(
+            textAlign: TextAlign.center,
+            'Recife, a Veneza Brasileira! Com suas pontes, história e cultura. Terra do Galo da Madrugada, o maior bloco carnavalesco do mundo.', 
+            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            fontWeight: FontWeight.bold
+            )
+            ), 
+
 
             Container(height: 60,),
             Row(
@@ -86,7 +78,7 @@ class HomePageState extends State<RecifePage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                              
                                 onPressed: () {
                                     Navigator.of(context).pushReplacementNamed('/viagem01');   
@@ -102,7 +94,7 @@ class HomePageState extends State<RecifePage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                                 
                                 onPressed: () {
                                     Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
@@ -111,13 +103,13 @@ class HomePageState extends State<RecifePage> {
                               ),
                   SizedBox(height: 10),
 
-                  Text('EXPLORAR', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
+                  Text('EXPLORAR',textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
                 ],
               ),
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                                
                                 onPressed: () {
                                     Navigator.of(context).pushReplacementNamed('/pitaco');   

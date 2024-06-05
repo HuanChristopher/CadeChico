@@ -35,17 +35,28 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
+  google_fonts: ^6.2.1
+  audioplayers: ^6.0.0
+  video_player: ^2.8.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^4.0.0
+
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  image_path: "assets/icones/icon.png"
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+ 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -69,6 +80,35 @@ flutter:
      - assets/imagens/backgroundVerde.jpg
      - assets/imagens/chicoHistoria.png
      - assets/imagens/logo001.png
+     - assets/imagens/02.bonito_cachoeira01.png
+     - assets/imagens/02.bonito_cachoeira02.jpg
+     - assets/imagens/02.bonito_capela01.png
+     - assets/imagens/02.bonito_teleferico01.png
+     - assets/imagens/02.bonito_teleferico02.png
+     - assets/imagens/03.salgueiro.igreja.png
+     - assets/imagens/03.salgueiro.quilombo.png
+     - assets/imagens/03.salgueiro.sitio.png
+     - assets/imagens/03.salgueiro.png
+     - assets/imagens/04.petrolina.png
+     - assets/imagens/04.petrolina.museu.png
+     - assets/imagens/04.petrolina.catedral.png
+     - assets/imagens/04.petrolina.carrancas.png
+     - assets/imagens/05.olinda.jpg
+     - assets/imagens/05.olinda.farol.png
+     - assets/imagens/05.olinda.homemmeianoite.png
+     - assets/imagens/05.olinda.quatrocantos.png
+     - assets/imagens/06.vitoria.png
+     - assets/imagens/06.vitoria.tabocas.png
+     - assets/imagens/06.vitoria.leao.png
+     - assets/imagens/06.vitoria.jacare.png
+     - assets/imagens/07.afogados.png
+     - assets/imagens/07.afogados.vianao.png
+     - assets/imagens/07.afogados.catedral.png
+     - assets/imagens/07.afogados.sitio.png
+     - assets/imagens/08.caruaru.png
+     - assets/imagens/08.caruaru.casa.png
+     - assets/imagens/08.caruaru.museu.png
+     - assets/imagens/08.caruaru.feira.png
      - assets/imagens/mapa01.png
      - assets/icones/comment.png
      - assets/icones/voltar.png
@@ -84,12 +124,21 @@ flutter:
      - assets/cidades/petrolina.png
      - assets/cidades/salgueiro.png
      - assets/cidades/bonito.png
+     - assets/cidades/olinda.png
+     - assets/cidades/vitoria.png
+     - assets/cidades/recife.png
+     - assets/cidades/afogados.jpg
+     - assets/cidades/caruaru.jpg
      - assets/personalidades/alceu.jpg
      - assets/personalidades/gracaaraujo.jpg
      - assets/personalidades/ariano.jpg
      - assets/personalidades/jasonwallace.jpg
      - assets/personalidades/lia.jpg
      - assets/personalidades/chico.jpg
+     - assets/sounds/maracatu_atomico.mp3
+     - assets/sounds/maracatu_atomico2.mp3
+     - assets/sounds/maracatu.mp3
+     - assets/sounds/plim.mp3
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

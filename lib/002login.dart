@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,6 +12,26 @@ class _LoginPage extends State<LoginPage> {
 
 String email = '';
 String senha = '';
+
+AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/maracatu.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
 Widget _body(){
   return Column (
@@ -60,12 +81,14 @@ Widget _body(){
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 245, 247, 248),
-                      backgroundColor: const Color.fromARGB(255, 31, 100, 255),
+                      backgroundColor: Color.fromRGBO(255, 183, 14, 255),
                     ),
                 
                     onPressed: () {
                       if(email == 'huan.lima@ufrpe.br' && 
                           senha == 'ufrpe') {
+                        _stopMusic();
+                        _playMusic2();
                         Navigator.of(context).pushReplacementNamed('/historia');
                       } else {
                         print('e-mial ou senha inválidos');

@@ -46,7 +46,7 @@ class HomePageState extends State<RecifeExplorarPage> {
         ),
       ),
       appBar: AppBar(
-        title: Text('ANDANDO POR RECIFE', style: TextStyle(fontWeight: FontWeight.bold,)), 
+        title: Text('ANDANDO POR RECIFE', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
         
       ),
       body: Container( 
@@ -58,10 +58,10 @@ class HomePageState extends State<RecifeExplorarPage> {
            
             Column(
               children: [
-                ElevatedButton(
+                MaterialButton(
                                  
                                     onPressed: () {
-                                        Navigator.of(context).pushReplacementNamed('/recife');   
+                                        Navigator.of(context).pushReplacementNamed('/recife_saoluiz');   
                                     }, 
                                     child: Image.asset('assets/imagens/01.recifeSaoLuiz.png', fit: BoxFit.cover, width: 180, height: 130,), 
                                   ),
@@ -78,10 +78,10 @@ class HomePageState extends State<RecifeExplorarPage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recife');   
+                                    Navigator.of(context).pushReplacementNamed('/recife_conceicao');   
                                 }, 
                                 child: Image.asset('assets/imagens/01.recifeConceicao.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -94,16 +94,16 @@ class HomePageState extends State<RecifeExplorarPage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
+                                    Navigator.of(context).pushReplacementNamed('/recife_ufrpe');   
                                 }, 
                                 child: Image.asset('assets/imagens/01.recifeTorre.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
                   SizedBox(height: 10),
 
-                  Text('Torre de Cristal', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
+                  Text('UFRPE', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
                 ],
               ),
 
@@ -118,7 +118,7 @@ class HomePageState extends State<RecifeExplorarPage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                              
                                 onPressed: () {
                                     Navigator.of(context).pushReplacementNamed('/viagem01');   
@@ -134,7 +134,7 @@ class HomePageState extends State<RecifeExplorarPage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                                 
                                 onPressed: () {
                                     Navigator.of(context).pushReplacementNamed('/recife');   
@@ -149,7 +149,7 @@ class HomePageState extends State<RecifeExplorarPage> {
 
               Column(
                 children: [
-                  ElevatedButton(
+                  MaterialButton(
                                
                                 onPressed: () {
                                     Navigator.of(context).pushReplacementNamed('/pitaco');   

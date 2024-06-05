@@ -2,15 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 
-class BonitoPage extends StatefulWidget{
+class CaruaruPage extends StatefulWidget{
   @override
-  State<BonitoPage> createState() {
+  State<CaruaruPage> createState() {
     return HomePageState();
   }
 
 }
 
-class HomePageState extends State<BonitoPage> {
+class HomePageState extends State<CaruaruPage> {
   int counter = 0;
 
   @override
@@ -45,8 +45,9 @@ class HomePageState extends State<BonitoPage> {
             )
         ),
       ),
+      
       appBar: AppBar(
-        title: Text('NO MUNICÍPIO DE', style: TextStyle(fontWeight: FontWeight.bold,)), 
+        title: Text('CARUARU', style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
         
       ),
       body: Container( 
@@ -58,25 +59,16 @@ class HomePageState extends State<BonitoPage> {
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/bunito.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/08.caruaru.png', fit: BoxFit.cover)),
   
-            Text('BONITO', 
-            style: TextStyle(
-            fontSize: 40,
-            //fontWeight: FontWeight.bold,
-            foreground: Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 6
-          ..color = Colors.blue[700]!
-          ),
-          ),
-            ElevatedButton(
-                            
-                            onPressed: () {
-                                Navigator.of(context).pushReplacementNamed('/recifeData');   
-                            }, 
-                            child: Image.asset('assets/icones/exclamation.png', fit: BoxFit.cover, width: 50, height: 50,), 
-                          ),
+            Text(
+            textAlign: TextAlign.center,
+            'Conhecida como a Capital do Forró e a Princesinha do Agreste, Caruaru é famosa por suas festas juninas, sua feira livre e seu artesanato, especialmente as obras de cerâmica do Alto do Moura.', 
+            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            fontWeight: FontWeight.bold
+            )
+            ), 
+
 
             Container(height: 60,),
             Row(
@@ -89,7 +81,7 @@ class HomePageState extends State<BonitoPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem01');   
+                                    Navigator.of(context).pushReplacementNamed('/viagem08');   
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -105,13 +97,13 @@ class HomePageState extends State<BonitoPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
+                                    Navigator.of(context).pushReplacementNamed('/caruaruExplorar');   
                                 }, 
                                 child: Image.asset('assets/icones/building.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
                   SizedBox(height: 10),
 
-                  Text('EXPLORAR', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
+                  Text('EXPLORAR',textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
                 ],
               ),
 

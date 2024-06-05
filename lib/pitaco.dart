@@ -67,7 +67,7 @@ class HomePageState extends State<pitacoPage> {
                     children: [
                       MaterialButton(            
                       onPressed: () { 
-                        Navigator.of(context).pushReplacementNamed('/recife');   
+                        Navigator.of(context).pushReplacementNamed('/alceu');   
                       },
                       
                       child: 
@@ -95,7 +95,7 @@ class HomePageState extends State<pitacoPage> {
                     children: [
                        MaterialButton(            
                       onPressed: () { 
-                        Navigator.of(context).pushReplacementNamed('/recife');   
+                        Navigator.of(context).pushReplacementNamed('/graca');   
                       },
                       
                       child: 
@@ -122,7 +122,7 @@ class HomePageState extends State<pitacoPage> {
                     children: [
                        MaterialButton(            
                       onPressed: () { 
-                        Navigator.of(context).pushReplacementNamed('/recife');   
+                        Navigator.of(context).pushReplacementNamed('/ariano');   
                       },
                       
                       child: 
@@ -156,7 +156,7 @@ class HomePageState extends State<pitacoPage> {
                     children: [
                       MaterialButton(            
                       onPressed: () { 
-                        Navigator.of(context).pushReplacementNamed('/recife');   
+                        Navigator.of(context).pushReplacementNamed('/jason');   
                       },
                       
                       child: 
@@ -184,7 +184,7 @@ class HomePageState extends State<pitacoPage> {
                     children: [
                        MaterialButton(            
                       onPressed: () { 
-                        Navigator.of(context).pushReplacementNamed('/recife');   
+                        Navigator.of(context).pushReplacementNamed('/chico');   
                       },
                       
                       child: 
@@ -211,7 +211,7 @@ class HomePageState extends State<pitacoPage> {
                     children: [
                        MaterialButton(            
                       onPressed: () { 
-                        Navigator.of(context).pushReplacementNamed('/recife');   
+                        Navigator.of(context).pushReplacementNamed('/lia');   
                       },
                       
                       child: 
@@ -229,14 +229,23 @@ class HomePageState extends State<pitacoPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 12,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
                     ],
-                  ),
-                   
-                  
+                  ), 
                 ],
               ),
+              
             ),
+             MaterialButton(
+                            
+                onPressed: () {
+                   Navigator.of(context).pushReplacementNamed('/recife');   
+                }, 
+                child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
+            ),
+
           ],
+          
         ),
+        
       ),
        
     );
