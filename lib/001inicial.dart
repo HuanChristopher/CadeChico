@@ -74,7 +74,7 @@ Widget _body(){
                   Text(
                   textAlign: TextAlign.center,
                   'SEM FINS LUCRATIVOS', 
-                  style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 235, 7, 7),
+                  style: TextStyle(fontSize: 20,color: Color.fromARGB(225, 242, 240, 240),
                   fontWeight: FontWeight.bold)),
                 ],
               ),

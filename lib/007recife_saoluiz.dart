@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class RecifeSaoLuizPage extends StatefulWidget{
   @override
@@ -55,18 +57,39 @@ class HomePageState extends State<RecifeSaoLuizPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+
+            Text(
+              context.watch<TimeProvider>().formattedTime,
+              style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+              context.watch<TimeProvider>().formattedDay,
+              style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 10),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/01.recifeSaoLuiz.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/01.recifeSaoLuiz2.png', fit: BoxFit.cover)),
   
-            Text(
-            textAlign: TextAlign.center,
-            'O Cinema São Luiz, localizado no centro de Recife, é um dos cinemas mais icônicos e históricos do Brasil. Inaugurado em 09/09/1952, ele se destaca por sua arquitetura projetada pelo arquiteto húngaro George Kornise e sua importância cultural.', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
-            fontWeight: FontWeight.bold
-            )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+              textAlign: TextAlign.center,
+              'O Cinema São Luiz, localizado no centro de Recife, é um dos cinemas mais icônicos e históricos do Brasil. Inaugurado em 09/09/1952, ele se destaca por sua arquitetura projetada pelo arquiteto húngaro George Kornise e sua importância cultural.', 
+              style: TextStyle(
+                fontFamily: 'Xilosa',
+                fontSize: 18,
+                color: Color.fromARGB(255, 31, 100, 255),
+              fontWeight: FontWeight.bold
+              )
+              ),
             ), 
 
 
@@ -81,7 +104,8 @@ class HomePageState extends State<RecifeSaoLuizPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem01');   
+                                    Navigator.pushNamed(context, '/viagem01'); 
+                                    //Navigator.of(context).pushReplacementNamed('/viagem01');   
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +121,8 @@ class HomePageState extends State<RecifeSaoLuizPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
+                                    Navigator.pushNamed(context, '/recifeExplorar');  
+                                    //Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +137,8 @@ class HomePageState extends State<RecifeSaoLuizPage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                    Navigator.pushNamed(context, '/pitaco');  
+                                    //Navigator.of(context).pushReplacementNamed('/pitaco');   
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

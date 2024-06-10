@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^6.2.1
   audioplayers: ^6.0.0
   video_player: ^2.8.6
+  provider: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -76,54 +77,97 @@ flutter:
      - assets/imagens/logocade2.png
      - assets/imagens/logocade3.png
      - assets/imagens/huan.jpg
+     - assets/icones/megaphone.png
      - assets/imagens/backgroundAzul.jpg
      - assets/imagens/backgroundVerde.jpg
      - assets/imagens/chicoHistoria.png
      - assets/imagens/logo001.png
+     - assets/imagens/tutorial01.png
      - assets/imagens/02.bonito_cachoeira01.png
-     - assets/imagens/02.bonito_cachoeira02.jpg
+     - assets/imagens/02.bonito_cachoeira02.png
      - assets/imagens/02.bonito_capela01.png
+     - assets/imagens/02.bonito_capela02.png
      - assets/imagens/02.bonito_teleferico01.png
      - assets/imagens/02.bonito_teleferico02.png
+     - assets/imagens/02.bonito_teleferico03.png
      - assets/imagens/03.salgueiro.igreja.png
+     - assets/imagens/03.salgueiro.igreja2.png
      - assets/imagens/03.salgueiro.quilombo.png
+     - assets/imagens/03.salgueiro.quilombo2.png
      - assets/imagens/03.salgueiro.sitio.png
+     - assets/imagens/03.salgueiro.sitio2.png
      - assets/imagens/03.salgueiro.png
      - assets/imagens/04.petrolina.png
      - assets/imagens/04.petrolina.museu.png
+     - assets/imagens/04.petrolina.museu2.png
      - assets/imagens/04.petrolina.catedral.png
+     - assets/imagens/04.petrolina.catedral2.png
      - assets/imagens/04.petrolina.carrancas.png
+     - assets/imagens/04.petrolina.carrancas2.png
      - assets/imagens/05.olinda.jpg
      - assets/imagens/05.olinda.farol.png
+     - assets/imagens/05.olinda.farol2.png
      - assets/imagens/05.olinda.homemmeianoite.png
      - assets/imagens/05.olinda.quatrocantos.png
+     - assets/imagens/05.olinda.quatrocantos2.png
      - assets/imagens/06.vitoria.png
      - assets/imagens/06.vitoria.tabocas.png
+     - assets/imagens/06.vitoria.tabocas2.png
      - assets/imagens/06.vitoria.leao.png
+     - assets/imagens/06.vitoria.leao2.png
      - assets/imagens/06.vitoria.jacare.png
+     - assets/imagens/06.vitoria.jacare2.png
      - assets/imagens/07.afogados.png
      - assets/imagens/07.afogados.vianao.png
      - assets/imagens/07.afogados.catedral.png
      - assets/imagens/07.afogados.sitio.png
+     - assets/imagens/07.afogados.sitio2.png
      - assets/imagens/08.caruaru.png
      - assets/imagens/08.caruaru.casa.png
+     - assets/imagens/08.caruaru.casa2.png
      - assets/imagens/08.caruaru.museu.png
+     - assets/imagens/08.caruaru.museu2.png
      - assets/imagens/08.caruaru.feira.png
+     - assets/imagens/08.caruaru.feira2.png
+     - assets/imagens/09.garanhus.png
+     - assets/imagens/09.garanhus.castelo.png
+     - assets/imagens/09.garanhus.mosteiro.png
+     - assets/imagens/09.garanhus.floresta.png
      - assets/imagens/mapa01.png
+     - assets/imagens/mapa02.png
+     - assets/imagens/mapa03.png
+     - assets/imagens/mapa04.png
+     - assets/imagens/mapa05.png
+     - assets/imagens/mapa06.png
+     - assets/imagens/mapa07.png
+     - assets/imagens/mapa09.png
      - assets/icones/comment.png
+     - assets/icones/comment2.png
      - assets/icones/voltar.png
      - assets/icones/exclamation.png
      - assets/icones/map-marker.png
+     - assets/icones/map-marker2.png
      - assets/icones/building.png
+     - assets/icones/building2.png
      - assets/icones/globe.png
      - assets/imagens/01.recifeConceicao.png
+     - assets/imagens/01.recifeConceicao2.png
+     - assets/imagens/01.recifeGil01.png
+     - assets/imagens/01.recifeGil02.png
+     - assets/imagens/01.recifeGil03.png
+     - assets/imagens/01.recifeGil04.png
+     - assets/imagens/01.recifeGil05.png
+     - assets/imagens/01.recifeGil06.png
      - assets/imagens/01.recifeSaoLuiz.png
+     - assets/imagens/01.recifeSaoLuiz2.png
      - assets/imagens/01.recifeTorre.png
      - assets/imagens/bonito_icon.jpg
      - assets/imagens/bunito.png
+     - assets/imagens/gameover.png
      - assets/cidades/petrolina.png
      - assets/cidades/salgueiro.png
      - assets/cidades/bonito.png
+     - assets/cidades/garanhuns.png
      - assets/cidades/olinda.png
      - assets/cidades/vitoria.png
      - assets/cidades/recife.png
@@ -139,6 +183,7 @@ flutter:
      - assets/sounds/maracatu_atomico2.mp3
      - assets/sounds/maracatu.mp3
      - assets/sounds/plim.mp3
+   
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -150,10 +195,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: Xilosa
+       fonts:
+         - asset: fonts/Xilosa.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

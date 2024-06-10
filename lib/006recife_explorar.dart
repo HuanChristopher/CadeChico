@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class RecifeExplorarPage extends StatefulWidget{
   @override
@@ -49,19 +51,43 @@ class HomePageState extends State<RecifeExplorarPage> {
         title: Text('ANDANDO POR RECIFE', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
         
       ),
-      body: Container( 
+      body: SizedBox( 
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
            
+            Text(
+              context.watch<TimeProvider>().formattedTime,
+              style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+              context.watch<TimeProvider>().formattedDay,
+              style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 10),
+
+            /*ElevatedButton(
+              onPressed: context.read<TimeProvider>().addThreeHours,
+              child: Text('Add 3 Hours'),
+            ),*/
+
             Column(
               children: [
                 MaterialButton(
                                  
                                     onPressed: () {
-                                        Navigator.of(context).pushReplacementNamed('/recife_saoluiz');   
+                                        context.read<TimeProvider>().addTwoHours();
+                                         if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                        Navigator.of(context).pushReplacementNamed('/recife_saoluiz');  } 
                                     }, 
                                     child: Image.asset('assets/imagens/01.recifeSaoLuiz.png', fit: BoxFit.cover, width: 180, height: 130,), 
                                   ),
@@ -81,7 +107,11 @@ class HomePageState extends State<RecifeExplorarPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recife_conceicao');   
+                                    context.read<TimeProvider>().addThreeHours();
+                                     if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                    Navigator.of(context).pushReplacementNamed('/recife_conceicao');   }
                                 }, 
                                 child: Image.asset('assets/imagens/01.recifeConceicao.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -97,7 +127,11 @@ class HomePageState extends State<RecifeExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recife_ufrpe');   
+                                    context.read<TimeProvider>().addFourHours();
+                                     if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                    Navigator.of(context).pushReplacementNamed('/recife_ufrpe');   }
                                 }, 
                                 child: Image.asset('assets/imagens/01.recifeTorre.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
@@ -137,7 +171,8 @@ class HomePageState extends State<RecifeExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recife');   
+                                    //Navigator.of(context).pushReplacementNamed('/recife');   
+                                    Navigator.pushNamed(context, '/recife'); 
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

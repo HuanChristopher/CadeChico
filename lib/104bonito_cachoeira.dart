@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class BonitoCachoeiraPage extends StatefulWidget{
   @override
@@ -55,16 +57,30 @@ class HomePageState extends State<BonitoCachoeiraPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/02.bonito_cachoeira01.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/02.bonito_cachoeira02.png', fit: BoxFit.cover)),
   
             Text(
             textAlign: TextAlign.center,
             'A Cachoeira Véu da Noiva, situada a cerca de 10 km do centro de Bonito, é uma das atrações naturais mais impressionantes e visitadas na cidade. A queda dágua de aproximadamente 32 metros de altura é um destino popular para a prática de rapel.', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            style: TextStyle(fontFamily: 'Xilosa',fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
             ), 
@@ -81,7 +97,8 @@ class HomePageState extends State<BonitoCachoeiraPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem02');   
+                                    Navigator.pushNamed(context, '/viagem02');  
+                              
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +114,8 @@ class HomePageState extends State<BonitoCachoeiraPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/bonitoExplorar');   
+                                    Navigator.pushNamed(context, '/bonitoExplorar'); 
+                                   
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +130,8 @@ class HomePageState extends State<BonitoCachoeiraPage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco');  
+                               
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

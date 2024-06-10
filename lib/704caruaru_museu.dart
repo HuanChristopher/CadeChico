@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class CaruaruMuseuPage extends StatefulWidget{
   @override
@@ -55,16 +57,30 @@ class HomePageState extends State<CaruaruMuseuPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/08.caruaru.museu.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/08.caruaru.museu2.png', fit: BoxFit.cover)),
   
             Text(
             textAlign: TextAlign.center,
             'Inaugurado em 1985, em um esforço para homenagear Luiz Gonzaga e perpetuar a memória do forró e de outros ritmos nordestinos.', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            style: TextStyle(fontFamily: 'Xilosa',fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
             ), 
@@ -81,7 +97,8 @@ class HomePageState extends State<CaruaruMuseuPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem08');   
+                                    Navigator.pushNamed(context, '/viagem08');
+                            
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +114,8 @@ class HomePageState extends State<CaruaruMuseuPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/caruaruExplorar');   
+                                  Navigator.pushNamed(context, '/caruaruExplorar');  
+                                    
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +130,8 @@ class HomePageState extends State<CaruaruMuseuPage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco');
+                              
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

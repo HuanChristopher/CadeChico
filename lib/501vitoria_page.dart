@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class VitoriaPage extends StatefulWidget{
   @override
@@ -47,7 +49,7 @@ class HomePageState extends State<VitoriaPage> {
       ),
       
       appBar: AppBar(
-        title: Text('VITÓRIA DE SANTO ANTÃO', style: TextStyle(fontSize: 25,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
+        title: Text('VITÓRIA DE SANTO ANTÃO', style: TextStyle(fontSize: 22,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
         
       ),
       body: Container( 
@@ -55,16 +57,30 @@ class HomePageState extends State<VitoriaPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/01.recife01.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/06.vitoria.png', fit: BoxFit.cover)),
   
             Text(
             textAlign: TextAlign.center,
             'Vitória de Santo Antão, conhecida como a Capital do Império, tem como referência histórica a Batalha das Tabocas, travada durante as lutas contra os flamengos (século 17).', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            style: TextStyle(fontFamily: 'Xilosa',fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
             ), 
@@ -81,7 +97,8 @@ class HomePageState extends State<VitoriaPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem07');   
+                                  Navigator.pushNamed(context, '/viagem07'); 
+                                   
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +114,8 @@ class HomePageState extends State<VitoriaPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/vitoriaExplorar');   
+                                  Navigator.pushNamed(context, '/vitoriaExplorar'); 
+                              
                                 }, 
                                 child: Image.asset('assets/icones/building.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +130,8 @@ class HomePageState extends State<VitoriaPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco'); 
+                                    
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

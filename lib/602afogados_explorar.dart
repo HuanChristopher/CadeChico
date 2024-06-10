@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class AfogadosExplorarPage extends StatefulWidget{
   @override
@@ -54,14 +56,33 @@ class HomePageState extends State<AfogadosExplorarPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Column(
               children: [
                 MaterialButton(
                                  
                                     onPressed: () {
-                                        Navigator.of(context).pushReplacementNamed('/afogados_sitio');   
+                                      context.read<TimeProvider>().addThreeHours();
+                                       if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                      Navigator.pushNamed(context, '/afogados_sitio');  }
+                                         
                                     }, 
                                     child: Image.asset('assets/imagens/07.afogados.sitio.png', fit: BoxFit.cover, width: 180, height: 130,), 
                                   ),
@@ -81,7 +102,12 @@ class HomePageState extends State<AfogadosExplorarPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/afogados_catedral');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/afogados_catedral');}
+                                    
                                 }, 
                                 child: Image.asset('assets/imagens/07.afogados.catedral.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -97,7 +123,12 @@ class HomePageState extends State<AfogadosExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/afogados_vianao');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/afogados_vianao');}
+                                      
                                 }, 
                                 child: Image.asset('assets/imagens/07.afogados.vianao.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
@@ -121,7 +152,8 @@ class HomePageState extends State<AfogadosExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem04');   
+                                  Navigator.pushNamed(context, '/viagem04');  
+                                
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -137,7 +169,8 @@ class HomePageState extends State<AfogadosExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/afogados');   
+                                   Navigator.pushNamed(context, '/afogados');
+                                    
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -152,7 +185,8 @@ class HomePageState extends State<AfogadosExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco');
+                              
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

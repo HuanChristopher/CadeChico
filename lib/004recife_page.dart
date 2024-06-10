@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
+
 
 class RecifePage extends StatefulWidget{
   @override
@@ -12,6 +15,33 @@ class RecifePage extends StatefulWidget{
 
 class HomePageState extends State<RecifePage> {
   int counter = 0;
+
+  /*DateTime _dateTime = DateTime(2022, 1, 3, 9, 0); // Segunda-feira, 9:00 AM
+
+  void _addThreeHours() { // Função para add 3 horas
+    setState(() {
+      _dateTime = _dateTime.add(Duration(hours: 3));
+    });
+  }
+
+   String get _formattedTime {
+    final hours = _dateTime.hour % 12 == 0 ? 12 : _dateTime.hour % 12;
+    final period = _dateTime.hour >= 12 ? 'PM' : 'AM';
+    return '$hours:00 $period';
+  }
+
+  String get _formattedDay {
+    const daysOfWeek = [
+      'Domingo',
+      'Segunda-feira',
+      'Terça-feira',
+      'Quarta-feira',
+      'Quinta-feira',
+      'Sexta-feira',
+      'Sábado'
+    ];
+    return daysOfWeek[_dateTime.weekday % 7];
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +80,33 @@ class HomePageState extends State<RecifePage> {
         title: Text('RECIFE', style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255), fontWeight: FontWeight.bold)), 
         
       ),
-      body: Container( 
+
+      body: SizedBox( 
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+
+            Text(
+              context.watch<TimeProvider>().formattedTime,
+              style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+              context.watch<TimeProvider>().formattedDay,
+              style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 20),
+
+             /*ElevatedButton(
+              onPressed: context.read<TimeProvider>().addEightHours,
+              child: Text('Add 8 Hours'),
+            ),*/
            
             Container(
             //height: MediaQuery.of(context).size.height,
@@ -79,28 +130,34 @@ class HomePageState extends State<RecifePage> {
               Column(
                 children: [
                   MaterialButton(
-                             
+                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem01');   
+                                     Navigator.pushNamed(context, '/viagem01');  
+                                     //Navigator.of(context).pushReplacementNamed('/viagem01');    
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
 
                                SizedBox(height: 10),
 
+                             
                                Text('VIAJAR', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
                 ],
               ),
 
               Column(
                 children: [
-                  MaterialButton(
-                                
-                                onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
-                                }, 
-                                child: Image.asset('assets/icones/building.png', fit: BoxFit.cover, width: 50, height: 50,), 
-                              ),
+                  
+                 
+                  ElevatedButton(
+                      onPressed: () {
+                          //Navigator.of(context).pushReplacementNamed('/recifeExplorar'); 
+                          //context.read<TimeProvider>().addThreeHours();
+                          Navigator.pushNamed(context, '/recifeExplorar');  
+                        
+                      }, 
+                      child: Image.asset('assets/icones/building.png', fit: BoxFit.cover, width: 50, height: 50,), 
+                   ),
                   SizedBox(height: 10),
 
                   Text('EXPLORAR',textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
@@ -112,7 +169,8 @@ class HomePageState extends State<RecifePage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                    Navigator.pushNamed(context, '/pitaco');  
+                                    //Navigator.of(context).pushReplacementNamed('/pitaco');   
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -145,3 +203,4 @@ class CustomSwitch extends StatelessWidget {
             });
   }
 }
+

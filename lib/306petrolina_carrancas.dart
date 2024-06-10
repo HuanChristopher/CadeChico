@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class PetrolinaCarrancasPage extends StatefulWidget{
   @override
@@ -47,7 +49,7 @@ class HomePageState extends State<PetrolinaCarrancasPage> {
       ),
       
       appBar: AppBar(
-        title: Text('Espaço Cultural Ana das Carrancas', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
+        title: Text('Espaço Cultural\nAna das Carrancas', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold)), 
         
       ),
       body: Container( 
@@ -55,16 +57,30 @@ class HomePageState extends State<PetrolinaCarrancasPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/04.petrolina.carrancas.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/04.petrolina.carrancas2.png', fit: BoxFit.cover)),
   
             Text(
             textAlign: TextAlign.center,
             'Criado em homenagem a Ana das Carrancas, uma artesã local que se destacou pela sua habilidade na confecção das esculturas de carrancas, peças emblemáticas da cultura ribeirinha do Rio São Francisco.', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            style: TextStyle(fontFamily: 'Xilosa',fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
             ), 
@@ -81,7 +97,8 @@ class HomePageState extends State<PetrolinaCarrancasPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem06');   
+                                  Navigator.pushNamed(context, '/viagem06');  
+                              
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +114,8 @@ class HomePageState extends State<PetrolinaCarrancasPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/petrolinaExplorar');   
+                                  Navigator.pushNamed(context, '/petrolinaExplorar'); 
+                                   
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +130,8 @@ class HomePageState extends State<PetrolinaCarrancasPage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                   Navigator.pushNamed(context, '/pitaco'); 
+                               
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

@@ -58,9 +58,29 @@ class HomePageState extends State<pitacoPage> {
             Text('Personalidades de Pernambuco', 
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
+            
+             Container(height: 30,),
+
+             Column(
+               children: [
+                 MaterialButton(
+                                    
+                        onPressed: () {
+                          Navigator.of(context).pushReplacementNamed('/pitacoLista');
+                            
+                        }, 
+                        child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
+                                 ),
+                Text('Dar Pitaco', 
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
+               ],
+             ),   
+
+             Container(height: 10,),       
            
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(20.0),
               child: Row(
                 children: [
                   Column(
@@ -149,7 +169,7 @@ class HomePageState extends State<pitacoPage> {
             Container(height: 10,),
 
              Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(20.0),
               child: Row(
                 children: [
                   Column(
@@ -234,13 +254,22 @@ class HomePageState extends State<pitacoPage> {
               ),
               
             ),
-             MaterialButton(
-                            
-                onPressed: () {
-                   Navigator.of(context).pushReplacementNamed('/recife');   
-                }, 
-                child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
-            ),
+
+             Container(height: 10,),
+
+             
+                 MaterialButton(
+                                
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                     
+                    }, 
+                    child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
+                             ),
+                
+               
+               
+             
 
           ],
           

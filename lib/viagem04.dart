@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class Viagem04Page extends StatefulWidget{
   @override
@@ -52,11 +54,25 @@ class HomePageState extends State<Viagem04Page> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/mapa01.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/mapa04.png', fit: BoxFit.cover)),
 
             Container(height: 60,),
             Row(
@@ -85,13 +101,18 @@ class HomePageState extends State<Viagem04Page> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/vitoria');   
+                                  context.read<TimeProvider>().addSevenHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/recife');}
+                                     
                                 }, 
-                                child: Image.asset('assets/cidades/vitoria.png', fit: BoxFit.cover, width: 70, height: 50,), 
+                                child: Image.asset('assets/cidades/recife.png', fit: BoxFit.cover, width: 70, height: 50,), 
                               ),
                   SizedBox(height: 10),
 
-                  Text('Vitória de\nSanto Antão', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
+                  Text('Recife', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
                 ],
               ),
 
@@ -100,13 +121,18 @@ class HomePageState extends State<Viagem04Page> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/caruaru');   
+                                  context.read<TimeProvider>().addFiveHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/bonito');}
+                                      
                                 }, 
-                                child: Image.asset('assets/cidades/caruaru.jpg', fit: BoxFit.cover, width: 70, height: 50,), 
+                                child: Image.asset('assets/cidades/bonito.png', fit: BoxFit.cover, width: 70, height: 50,), 
                               ),
                   SizedBox(height: 10),
 
-                  Text('Caruaru', textAlign: TextAlign.center, style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
+                  Text('Bonito', textAlign: TextAlign.center, style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
                 ],
 
                 
@@ -123,7 +149,8 @@ class HomePageState extends State<Viagem04Page> {
             MaterialButton(
                             
                 onPressed: () {
-                   Navigator.of(context).pushReplacementNamed('/afogados');   
+                    Navigator.pushNamed(context, '/afogados');
+                  
                 }, 
                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
             ),

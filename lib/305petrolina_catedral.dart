@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class PetrolinaCatedralPage extends StatefulWidget{
   @override
@@ -55,16 +57,30 @@ class HomePageState extends State<PetrolinaCatedralPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/04.petrolina.catedral.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/04.petrolina.catedral2.png', fit: BoxFit.cover)),
   
             Text(
             textAlign: TextAlign.center,
             'A construção da Catedral do Sagrado Coração de Jesus teve início em meados do século XX, por volta da década de 1940, como uma resposta ao crescimento da comunidade católica na cidade.', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            style: TextStyle(fontFamily: 'Xilosa',fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
             ), 
@@ -81,7 +97,8 @@ class HomePageState extends State<PetrolinaCatedralPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem06');   
+                                  Navigator.pushNamed(context, '/viagem06'); 
+                         
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +114,8 @@ class HomePageState extends State<PetrolinaCatedralPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/petrolinaExplorar');   
+                                   Navigator.pushNamed(context, '/petrolinaExplorar'); 
+                                  
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +130,7 @@ class HomePageState extends State<PetrolinaCatedralPage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco');  
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

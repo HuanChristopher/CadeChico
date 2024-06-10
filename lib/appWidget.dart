@@ -3,6 +3,11 @@ import 'package:cadechico/001inicial.dart';
 import 'package:cadechico/003historia.dart';
 import 'package:cadechico/006recife_explorar.dart';
 import 'package:cadechico/007recife_saoluiz.dart';
+import 'package:cadechico/008recife_ufrpe%20copy%202.dart';
+import 'package:cadechico/008recife_ufrpe%20copy%203.dart';
+import 'package:cadechico/008recife_ufrpe%20copy%204.dart';
+import 'package:cadechico/008recife_ufrpe%20copy%205.dart';
+import 'package:cadechico/008recife_ufrpe%20copy%206.dart';
 import 'package:cadechico/008recife_ufrpe.dart';
 import 'package:cadechico/009recife_conceicao.dart';
 import 'package:cadechico/101bonito_page.dart';
@@ -46,7 +51,19 @@ import 'package:cadechico/803persona_ariano.dart';
 import 'package:cadechico/804persona_jason.dart';
 import 'package:cadechico/805persona_lia.dart';
 import 'package:cadechico/806persona_chico.dart';
+import 'package:cadechico/900garanhuns_page.dart';
+import 'package:cadechico/901garanhuns_explorar.dart';
+import 'package:cadechico/902garanhuns_parque.dart';
+import 'package:cadechico/903garanhuns_castelo.dart';
+import 'package:cadechico/904garanhuns_mosteiro.dart';
+import 'package:cadechico/gameover.dart';
 import 'package:cadechico/pitaco.dart';
+import 'package:cadechico/pitacoLista.dart';
+import 'package:cadechico/tutorial01.dart';
+import 'package:cadechico/tutorial02.dart';
+import 'package:cadechico/tutorial03.dart';
+import 'package:cadechico/tutorial04.dart';
+import 'package:cadechico/tutorial05.dart';
 import 'package:cadechico/viagem01.dart';
 import 'package:cadechico/viagem02.dart';
 import 'package:cadechico/viagem03.dart';
@@ -55,19 +72,25 @@ import 'package:cadechico/viagem05.dart';
 import 'package:cadechico/viagem06.dart';
 import 'package:cadechico/viagem07.dart';
 import 'package:cadechico/viagem08.dart';
+import 'package:cadechico/viagem09.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:cadechico/004recife_page.dart';
 import 'package:cadechico/002login.dart';
 
+
 class AppWidget extends StatelessWidget{
   
   @override
   Widget build(BuildContext context) {
+
+    
+
     return AnimatedBuilder(
         animation: AppController.instance,
         builder: (context, child) {
         return MaterialApp(
+      
         theme: ThemeData.light(),
         initialRoute: '/inicial',
         routes: {
@@ -75,6 +98,7 @@ class AppWidget extends StatelessWidget{
           '/login':           (context)  =>  LoginPage(),
           '/recife':          (context)  =>  RecifePage(),
           '/historia':        (context)  =>  HistoriaPage(), 
+          '/gameover':        (context)  =>  GameOverPage(),
           '/recifeExplorar':  (context)  =>  RecifeExplorarPage(),
           '/salgueiroExplorar':  (context)  =>  SalgueiroExplorarPage(),
           '/petrolinaExplorar':  (context)  =>  PetrolinaExplorarPage(),
@@ -82,7 +106,13 @@ class AppWidget extends StatelessWidget{
           '/afogadosExplorar':   (context)  =>  AfogadosExplorarPage(),
           '/caruaruExplorar':    (context)  =>  CaruaruExplorarPage(),
           '/vitoriaExplorar':    (context)  =>  VitoriaExplorarPage(),
-          '/pitaco':          (context)  =>  pitacoPage(),
+          '/pitaco':             (context)  =>  pitacoPage(),
+          '/pitacoLista':        (context)  =>  pitacoListaPage(),
+          '/tutorial01':         (context)  =>  Tutorial01Page(),
+          '/tutorial02':         (context)  =>  Tutorial02Page(),
+          '/tutorial03':         (context)  =>  Tutorial03Page(),
+          '/tutorial04':         (context)  =>  Tutorial04Page(),
+          '/tutorial05':         (context)  =>  Tutorial05Page(),
           '/viagem01':        (context)  =>  Viagem01Page(), 
           '/viagem08':        (context)  =>  Viagem08Page(), 
           '/viagem02':        (context)  =>  Viagem02Page(), 
@@ -91,6 +121,7 @@ class AppWidget extends StatelessWidget{
           '/viagem05':        (context)  =>  Viagem05Page(), 
           '/viagem06':        (context)  =>  Viagem06Page(), 
           '/viagem07':        (context)  =>  Viagem07Page(), 
+          '/viagem09':        (context)  =>  Viagem09Page(), 
           '/bonito':          (context)  =>  BonitoPage(),
           '/bonitoExplorar':  (context)  =>  BonitoExplorarPage(),
           '/salgueiro':       (context)  =>  SalgueiroPage(),
@@ -99,9 +130,15 @@ class AppWidget extends StatelessWidget{
           '/afogados':        (context)  =>  AfogadosPage(),
           '/caruaru':         (context)  =>  CaruaruPage(),
           '/vitoria':         (context)  =>  VitoriaPage(),
+          '/garanhuns':         (context)  =>  GaranhunsPage(),
           '/recife_saoluiz':  (context)  =>  RecifeSaoLuizPage(),
           '/recife_conceicao':(context)  =>  RecifeConceicaoPage(),
           '/recife_ufrpe':    (context)  =>  RecifeUFRPEPage(),
+          '/recife_ufrpe2':    (context)  =>  RecifeUFRPEPage2(),
+          '/recife_ufrpe3':    (context)  =>  RecifeUFRPEPage3(),
+          '/recife_ufrpe4':    (context)  =>  RecifeUFRPEPage4(),
+          '/recife_ufrpe5':    (context)  =>  RecifeUFRPEPage5(),
+          '/recife_ufrpe6':    (context)  =>  RecifeUFRPEPage6(),
           '/bonito_cachoeira':(context)  =>  BonitoCachoeiraPage(),
           '/bonito_teleferico':           (context)  =>  BonitoTelefericoPage(),
           '/bonito_capela':               (context)  =>  BonitoCapelaPage(),
@@ -123,6 +160,10 @@ class AppWidget extends StatelessWidget{
           '/caruaru_feira':               (context)  =>  CaruaruFeiraPage(),
           '/caruaru_museu':               (context)  =>  CaruaruMuseuPage(),
           '/caruaru_casa':                (context)  =>  CaruaruCasaPage(),
+          '/garanhunsExplorar':           (context)  =>  GaranhunsExplorarPage(),
+          '/garanhuns_parque':            (context)  =>  GaranhunsParquePage(),
+          '/garanhuns_castelo':           (context)  =>  GaranhunsCasteloPage(),
+          '/garanhuns_mosteiro':          (context)  =>  GaranhunsMosteiroPage(),
           '/alceu':                       (context)  =>  AlcelPage(),
           '/ariano':                      (context)  =>  ArianoPage(),
           '/graca':                       (context)  =>  GracaPage(),

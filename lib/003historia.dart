@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class HistoriaPage extends StatefulWidget {
   const HistoriaPage({super.key});
@@ -8,6 +9,26 @@ class HistoriaPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<HistoriaPage> {
+
+AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/maracatu.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
 Widget _body(){
   return Column (
@@ -23,28 +44,19 @@ Widget _body(){
                   children: [
                     
                   Container(height: 350,),
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 12, right: 12, top: 20, bottom: 12),
-                      child: Column(
-                        children: [
-                        
-                          
-                          ElevatedButton(
+                  ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: const Color.fromARGB(255, 245, 247, 248),
-                              backgroundColor: const Color.fromARGB(255, 31, 100, 255),
+                              foregroundColor: Color.fromARGB(255, 2, 171, 255),
+                              backgroundColor: Color.fromARGB(255, 255, 255, 255),
                             ),
                         
                             onPressed: () {
-                                Navigator.of(context).pushReplacementNamed('/recife');   
+                                _stopMusic();
+                                _playMusic2;
+                                Navigator.of(context).pushReplacementNamed('/tutorial01');   
                             }, 
                             child: Text('CONTINUAR'), 
-                          )
-                        ],
-                        ),
-                    )
-                  ),
+                          ),
                   
                 ],
               ),

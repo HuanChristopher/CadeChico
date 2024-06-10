@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class BonitoPage extends StatefulWidget{
   @override
@@ -54,7 +56,21 @@ class HomePageState extends State<BonitoPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
@@ -79,7 +95,8 @@ class HomePageState extends State<BonitoPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem02');   
+                                  Navigator.pushNamed(context, '/viagem02');  
+                         
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -95,7 +112,8 @@ class HomePageState extends State<BonitoPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/bonitoExplorar');   
+                                  Navigator.pushNamed(context, '/bonitoExplorar');  
+                                    
                                 }, 
                                 child: Image.asset('assets/icones/building.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -110,7 +128,8 @@ class HomePageState extends State<BonitoPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco'); 
+                         
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

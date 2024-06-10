@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class OlindaExplorarPage extends StatefulWidget{
   @override
@@ -54,14 +56,33 @@ class HomePageState extends State<OlindaExplorarPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),),
+                ),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),),
+                ),
+
+            SizedBox(height: 20),
            
             Column(
               children: [
                 MaterialButton(
                                  
                                     onPressed: () {
-                                        Navigator.of(context).pushReplacementNamed('/olinda_homem');   
+                                      context.read<TimeProvider>().addThreeHours();
+                                       if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                      Navigator.pushNamed(context, '/olinda_homem');  }
+                                          
                                     }, 
                                     child: Image.asset('assets/imagens/05.olinda.homemmeianoite.png', fit: BoxFit.cover, width: 180, height: 130,), 
                                   ),
@@ -81,7 +102,12 @@ class HomePageState extends State<OlindaExplorarPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/olinda_quatro');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/olinda_quatro');  }
+                              
                                 }, 
                                 child: Image.asset('assets/imagens/05.olinda.quatrocantos.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -97,7 +123,12 @@ class HomePageState extends State<OlindaExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/olinda_farol');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/olinda_farol');  }
+                            
                                 }, 
                                 child: Image.asset('assets/imagens/05.olinda.farol.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
@@ -121,7 +152,8 @@ class HomePageState extends State<OlindaExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem03');   
+                                  Navigator.pushNamed(context, '/viagem03'); 
+                                
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -137,7 +169,8 @@ class HomePageState extends State<OlindaExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/olinda');   
+                                   Navigator.pushNamed(context, '/olinda'); 
+                              
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -152,7 +185,8 @@ class HomePageState extends State<OlindaExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                    Navigator.pushNamed(context, '/pitaco'); 
+                                    
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class VitoriaExplorarPage extends StatefulWidget{
   @override
@@ -54,14 +56,33 @@ class HomePageState extends State<VitoriaExplorarPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Column(
               children: [
                 MaterialButton(
                                  
                                     onPressed: () {
-                                        Navigator.of(context).pushReplacementNamed('/vitoria_tabocas');   
+                                      context.read<TimeProvider>().addFourHours();
+                                       if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                      Navigator.pushNamed(context, '/vitoria_tabocas'); }
+                                        
                                     }, 
                                     child: Image.asset('assets/imagens/06.vitoria.tabocas.png', fit: BoxFit.cover, width: 180, height: 130,), 
                                   ),
@@ -81,7 +102,12 @@ class HomePageState extends State<VitoriaExplorarPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/vitoria_leao');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/vitoria_leao');}
+                                   
                                 }, 
                                 child: Image.asset('assets/imagens/06.vitoria.leao.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -97,7 +123,12 @@ class HomePageState extends State<VitoriaExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/vitoria_jacare');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/vitoria_jacare');}
+                                      
                                 }, 
                                 child: Image.asset('assets/imagens/06.vitoria.jacare.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
@@ -121,7 +152,8 @@ class HomePageState extends State<VitoriaExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem07');   
+                                  Navigator.pushNamed(context, '/viagem07');  
+                                   
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -137,7 +169,8 @@ class HomePageState extends State<VitoriaExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/vitoria');   
+                                  Navigator.pushNamed(context, '/vitoria'); 
+                                  
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -152,7 +185,8 @@ class HomePageState extends State<VitoriaExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco'); 
+                            
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

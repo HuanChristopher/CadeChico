@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class Viagem01Page extends StatefulWidget{
   @override
@@ -52,7 +54,21 @@ class HomePageState extends State<Viagem01Page> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Container(
             //height: MediaQuery.of(context).size.height,
@@ -69,7 +85,12 @@ class HomePageState extends State<Viagem01Page> {
                   MaterialButton(
                              
                     onPressed: () {
-                     Navigator.of(context).pushReplacementNamed('/petrolina');   
+                      context.read<TimeProvider>().addDozeHours();
+                       if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                      Navigator.pushNamed(context, '/petrolina'); }
+                        
                     }, 
                     child: Image.asset('assets/cidades/petrolina.png', fit: BoxFit.cover, width: 70, height: 50,), 
                   ),
@@ -85,7 +106,12 @@ class HomePageState extends State<Viagem01Page> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/salgueiro');   
+                                  context.read<TimeProvider>().addEightHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/salgueiro'); }
+                                  
                                 }, 
                                 child: Image.asset('assets/cidades/salgueiro.png', fit: BoxFit.cover, width: 70, height: 50,), 
                               ),
@@ -100,7 +126,12 @@ class HomePageState extends State<Viagem01Page> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/bonito');   
+                                  context.read<TimeProvider>().addTwoHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/bonito');}
+                                
                                 }, 
                                 child: Image.asset('assets/cidades/bonito.png', fit: BoxFit.cover, width: 70, height: 50,), 
                               ),
@@ -123,7 +154,8 @@ class HomePageState extends State<Viagem01Page> {
             MaterialButton(
                             
                 onPressed: () {
-                   Navigator.of(context).pushReplacementNamed('/recife');   
+                  Navigator.pushNamed(context, '/recife');
+                  
                 }, 
                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
             ),

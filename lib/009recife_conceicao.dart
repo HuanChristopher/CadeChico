@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class RecifeConceicaoPage extends StatefulWidget{
   @override
@@ -55,16 +57,31 @@ class HomePageState extends State<RecifeConceicaoPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           
+          children: <Widget>[
+           Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle(fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255)),
+            ),
+
+            SizedBox(height: 20),
             Container(
             //height: MediaQuery.of(context).size.height,
-            child: Image.asset('assets/imagens/01.recifeConceicao.png', fit: BoxFit.cover)),
+            child: Image.asset('assets/imagens/01.recifeConceicao2.png', fit: BoxFit.cover)),
   
             Text(
             textAlign: TextAlign.center,
             'O Morro da Conceição é um bairro da Zona Norte de Recife. Conhecido por seu valor religioso e cultural , a área é um importante ponto de peregrinação e celebração religiosa, em homenagem à Nossa Senhora da Conceição.', 
-            style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
+            style: TextStyle(
+              fontFamily: 'Xilosa',
+              fontSize: 18,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
             ), 
@@ -81,7 +98,8 @@ class HomePageState extends State<RecifeConceicaoPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem01');   
+                                    Navigator.pushNamed(context, '/viagem01'); 
+                                      
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -97,7 +115,8 @@ class HomePageState extends State<RecifeConceicaoPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/recifeExplorar');   
+                                  Navigator.pushNamed(context, '/recifeExplorar'); 
+                                  
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -112,7 +131,7 @@ class HomePageState extends State<RecifeConceicaoPage> {
                   MaterialButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                     Navigator.pushNamed(context, '/pitaco'); 
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

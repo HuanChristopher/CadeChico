@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
+import 'package:provider/provider.dart';
+import 'time_provider.dart';
 
 class CaruaruExplorarPage extends StatefulWidget{
   @override
@@ -54,14 +56,33 @@ class HomePageState extends State<CaruaruExplorarPage> {
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Text(
+                context.watch<TimeProvider>().formattedTime,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+            Text(
+                context.watch<TimeProvider>().formattedDay,
+                style: TextStyle( fontFamily: 'Xilosa',
+                fontSize: 20,
+                color: Color.fromARGB(255, 31, 100, 255),
+            ),),
+
+            SizedBox(height: 20),
            
             Column(
               children: [
                 MaterialButton(
                                  
                                     onPressed: () {
-                                        Navigator.of(context).pushReplacementNamed('/caruaru_feira');   
+                                      context.read<TimeProvider>().addTwoHours();
+                                       if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                      Navigator.pushNamed(context, '/caruaru_feira'); } 
+   
                                     }, 
                                     child: Image.asset('assets/imagens/08.caruaru.feira.png', fit: BoxFit.cover, width: 180, height: 130,), 
                                   ),
@@ -81,7 +102,12 @@ class HomePageState extends State<CaruaruExplorarPage> {
                   MaterialButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/caruaru_museu');   
+                                  context.read<TimeProvider>().addThreeHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/caruaru_museu'); }
+                                      
                                 }, 
                                 child: Image.asset('assets/imagens/08.caruaru.museu.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -97,7 +123,12 @@ class HomePageState extends State<CaruaruExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/caruaru_casa');   
+                                  context.read<TimeProvider>().addFourHours();
+                                   if(GlobalVariables.isGameOver){
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                  Navigator.pushNamed(context, '/caruaru_casa');}
+                                     
                                 }, 
                                 child: Image.asset('assets/imagens/08.caruaru.casa.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
@@ -121,7 +152,8 @@ class HomePageState extends State<CaruaruExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/viagem08');   
+                                  Navigator.pushNamed(context, '/viagem08');
+                                  
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -137,7 +169,8 @@ class HomePageState extends State<CaruaruExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/caruaru');   
+                                  Navigator.pushNamed(context, '/caruaru');
+                                      
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
@@ -152,7 +185,8 @@ class HomePageState extends State<CaruaruExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
-                                    Navigator.of(context).pushReplacementNamed('/pitaco');   
+                                  Navigator.pushNamed(context, '/pitaco');
+                                     
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),
