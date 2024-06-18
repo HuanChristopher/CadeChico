@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class AfogadosExplorarPage extends StatefulWidget{
 
 class HomePageState extends State<AfogadosExplorarPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +101,9 @@ class HomePageState extends State<AfogadosExplorarPage> {
                                        if(GlobalVariables.isGameOver){
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                      Navigator.pushNamed(context, '/afogados_sitio');  }
+                                        Navigator.pushNamed(context, '/afogados_sitio');
+                                            
+                                      }
                                          
                                     }, 
                                     child: Image.asset('assets/imagens/07.afogados.sitio.png', fit: BoxFit.cover, width: 180, height: 130,), 
@@ -106,10 +128,16 @@ class HomePageState extends State<AfogadosExplorarPage> {
                                    if(GlobalVariables.isGameOver){
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/afogados_catedral');}
+                                          if(GlobalVariables.isEnd) {
+                                                Navigator.pushNamed(context, '/afogados_catedral'); 
+                                            } else {
+                                              Navigator.pushNamed(context, '/afogados_catedral2'); 
+                                            }
+
+                                  }
                                     
                                 }, 
-                                child: Image.asset('assets/imagens/07.afogados.catedral.png', fit: BoxFit.cover, width: 180, height: 130,), 
+                                child: Image.asset('assets/imagens/07.afogados.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
 
                                SizedBox(height: 10),

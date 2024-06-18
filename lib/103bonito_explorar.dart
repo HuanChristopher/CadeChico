@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class BonitoExplorarPage extends StatefulWidget{
 
 class HomePageState extends State<BonitoExplorarPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +99,10 @@ class HomePageState extends State<BonitoExplorarPage> {
                                     onPressed: () {
                                       context.read<TimeProvider>().addThreeHours();
                                        if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
+                                        _audioPlayer.stop();
                                       Navigator.pushNamed(context, '/bonito_cachoeira');}
                                        
                                     }, 
@@ -105,9 +127,11 @@ class HomePageState extends State<BonitoExplorarPage> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addTwoHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/bonito_capela');}
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/bonito_capela');}
                                
                                 }, 
                                 child: Image.asset('assets/imagens/02.bonito_capela01.png', fit: BoxFit.cover, width: 180, height: 130,), 
@@ -126,9 +150,11 @@ class HomePageState extends State<BonitoExplorarPage> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addFourHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/bonito_teleferico');}
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/bonito_teleferico');}
                                      
                                 }, 
                                 child: Image.asset('assets/imagens/02.bonito_teleferico01.png', fit: BoxFit.cover, width: 130, height: 90,), 
@@ -153,6 +179,7 @@ class HomePageState extends State<BonitoExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/viagem02');  
                                     
                                 }, 
@@ -170,6 +197,7 @@ class HomePageState extends State<BonitoExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/bonito'); 
                                
                                 }, 
@@ -186,6 +214,7 @@ class HomePageState extends State<BonitoExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                    Navigator.pushNamed(context, '/pitaco'); 
                       
                                 }, 

@@ -21,7 +21,7 @@ AudioPlayer _audioPlayer = AudioPlayer();
   }
 
   void _playMusic() async {
-    await _audioPlayer.play(AssetSource('sounds/maracatu_atomico.mp3'),volume: 155.0, balance: 100.0, );
+    await _audioPlayer.play(AssetSource('sounds/intro01.mp3'),volume: 155.0, balance: 100.0, );
   }
 
   void _stopMusic() async {
@@ -55,7 +55,7 @@ Widget _body(){
                             ),
                         
                             onPressed: () {
-                                _stopMusic();
+                               _stopMusic();
                                 Navigator.of(context).pushReplacementNamed('/login');   
                             }, 
                             child: Text('INICIAR'), 

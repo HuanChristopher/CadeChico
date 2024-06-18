@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
 import 'time_provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class RecifeExplorarPage extends StatefulWidget{
   @override
@@ -14,6 +15,25 @@ class RecifeExplorarPage extends StatefulWidget{
 
 class HomePageState extends State<RecifeExplorarPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +60,7 @@ class HomePageState extends State<RecifeExplorarPage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -73,11 +94,6 @@ class HomePageState extends State<RecifeExplorarPage> {
 
             SizedBox(height: 10),
 
-            /*ElevatedButton(
-              onPressed: context.read<TimeProvider>().addThreeHours,
-              child: Text('Add 3 Hours'),
-            ),*/
-
             Column(
               children: [
                 MaterialButton(
@@ -85,8 +101,10 @@ class HomePageState extends State<RecifeExplorarPage> {
                                     onPressed: () {
                                         context.read<TimeProvider>().addTwoHours();
                                          if(GlobalVariables.isGameOver){
-                                        Navigator.pushNamed(context, '/gameover'); 
+                                            _audioPlayer.stop();
+                                            Navigator.pushNamed(context, '/gameover'); 
                                       } else {
+                                        _audioPlayer.stop();
                                         Navigator.of(context).pushReplacementNamed('/recife_saoluiz');  } 
                                     }, 
                                     child: Image.asset('assets/imagens/01.recifeSaoLuiz.png', fit: BoxFit.cover, width: 180, height: 130,), 
@@ -109,9 +127,11 @@ class HomePageState extends State<RecifeExplorarPage> {
                                 onPressed: () {
                                     context.read<TimeProvider>().addThreeHours();
                                      if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                    Navigator.of(context).pushReplacementNamed('/recife_conceicao');   }
+                                        _audioPlayer.stop();
+                                        Navigator.of(context).pushReplacementNamed('/recife_conceicao');   }
                                 }, 
                                 child: Image.asset('assets/imagens/01.recifeConceicao.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -129,9 +149,11 @@ class HomePageState extends State<RecifeExplorarPage> {
                                 onPressed: () {
                                     context.read<TimeProvider>().addFourHours();
                                      if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                    Navigator.of(context).pushReplacementNamed('/recife_ufrpe');   }
+                                        _audioPlayer.stop();
+                                        Navigator.of(context).pushReplacementNamed('/recife_ufrpe');   }
                                 }, 
                                 child: Image.asset('assets/imagens/01.recifeTorre.png', fit: BoxFit.cover, width: 130, height: 90,), 
                               ),
@@ -155,6 +177,7 @@ class HomePageState extends State<RecifeExplorarPage> {
                   MaterialButton(
                              
                                 onPressed: () {
+                                    _audioPlayer.stop();
                                     Navigator.of(context).pushReplacementNamed('/viagem01');   
                                 }, 
                                 child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
@@ -171,7 +194,7 @@ class HomePageState extends State<RecifeExplorarPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
-                                    //Navigator.of(context).pushReplacementNamed('/recife');   
+                                    _audioPlayer.stop();   
                                     Navigator.pushNamed(context, '/recife'); 
                                 }, 
                                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
@@ -187,6 +210,7 @@ class HomePageState extends State<RecifeExplorarPage> {
                   MaterialButton(
                                
                                 onPressed: () {
+                                    _audioPlayer.stop();
                                     Navigator.of(context).pushReplacementNamed('/pitaco');   
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 

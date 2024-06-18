@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class AfogadosCatedralPage extends StatefulWidget{
 
 class HomePageState extends State<AfogadosCatedralPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/LuaCiranda.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +99,7 @@ class HomePageState extends State<AfogadosCatedralPage> {
   
             Text(
             textAlign: TextAlign.center,
-            ' A Catedral da Ingazeira, oficialmente conhecida como Catedral Senhor Bom Jesus dos Remédios, foi construída no final do século XIX e início do século XX, em resposta ao crescimento da comunidade católica na região', 
+            ' Lia: Você veio até aqui para falar comigo? Entendi.. estão na luta contra o tempo. Para sua jornada, vou lhe dar o óculos de Chico que ele deixou aqui.', 
             style: TextStyle(fontFamily: 'Xilosa',fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),
             fontWeight: FontWeight.bold
             )
@@ -87,63 +107,24 @@ class HomePageState extends State<AfogadosCatedralPage> {
 
 
             Container(height: 60,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-
-              Column(
-                children: [
-                  MaterialButton(
-                             
-                                onPressed: () {
-                                  Navigator.pushNamed(context, '/viagem04'); 
-                                
-                                }, 
-                                child: Image.asset('assets/icones/map-marker.png', fit: BoxFit.cover, width: 50, height: 50,), 
-                              ),
-
-                               SizedBox(height: 10),
-
-                               Text('VIAJAR', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
-                ],
-              ),
-
-              Column(
-                 children: [
-                  MaterialButton(
-                                
-                                onPressed: () {
-                                    Navigator.pushNamed(context, '/afogadosExplorar'); 
-                                   
-                                }, 
-                                child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 
-                              ),
-                  SizedBox(height: 10),
-
-                  Text('VOLTAR', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold,),),
-                ],
-              ),
-
-              Column(
-                children: [
-                  MaterialButton(
+                 
+            ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Color.fromARGB(255, 2, 171, 255),
+                              backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            ),
+                        
+                            onPressed: () {
                                
-                                onPressed: () {
-                                     Navigator.pushNamed(context, '/pitaco'); 
-                           
-                                }, 
-                                child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
-                              ),
-                  SizedBox(height: 10),
-
-                  Text('PITACO', style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 31, 100, 255),fontWeight: FontWeight.bold),),
-                ],
-              ),
-
+                               
+                               
+                                Navigator.of(context).pushReplacementNamed('/endGame');   
+                            }, 
+                            child: Text('CONTINUAR'), 
+                          ),
               
 
-              ],)
+              
           ],
         ),
       ),

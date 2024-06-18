@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class AlcelPage extends StatefulWidget{
@@ -11,6 +12,25 @@ class AlcelPage extends StatefulWidget{
 
 class HomePageState extends State<AlcelPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/LaBelledeJour.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +57,7 @@ class HomePageState extends State<AlcelPage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -93,6 +114,7 @@ class HomePageState extends State<AlcelPage> {
              MaterialButton(
                             
                 onPressed: () {
+                  _audioPlayer.stop();
                    Navigator.of(context).pushReplacementNamed('/pitaco');   
                 }, 
                 child: Image.asset('assets/icones/voltar.png', fit: BoxFit.cover, width: 50, height: 50,), 

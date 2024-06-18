@@ -19,7 +19,7 @@ AudioPlayer _audioPlayer = AudioPlayer();
   }
 
   void _playMusic() async {
-    await _audioPlayer.play(AssetSource('sounds/maracatu.mp3'),volume: 155.0, balance: 100.0, );
+    await _audioPlayer.play(AssetSource('sounds/maracatu_atomico2.mp3'),volume: 155.0, balance: 100.0, );
   }
 
   void _playMusic2() async {

@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'time_provider.dart';
@@ -12,6 +13,25 @@ class Viagem03Page extends StatefulWidget{
 }
 
 class HomePageState extends State<Viagem03Page> {
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/auto01.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,9 +107,12 @@ class HomePageState extends State<Viagem03Page> {
                     onPressed: () {
                           context.read<TimeProvider>().addSevenHours();
                            if(GlobalVariables.isGameOver){
-                                        Navigator.pushNamed(context, '/gameover'); 
-                                      } else {
-                          Navigator.pushNamed(context, '/afogados');}
+                                     _audioPlayer.stop();
+                                      Navigator.pushNamed(context, '/gameover'); 
+                                } else {
+                                     _audioPlayer.stop();
+                                      _playMusic2();
+                                     Navigator.pushNamed(context, '/afogados');}
                      
                     }, 
                     child: Image.asset('assets/cidades/afogados.jpg', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -108,9 +131,12 @@ class HomePageState extends State<Viagem03Page> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addNineHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/salgueiro');}
+                                        _audioPlayer.stop();
+                                         _playMusic2();
+                                        Navigator.pushNamed(context, '/salgueiro');}
                                
                                 }, 
                                 child: Image.asset('assets/cidades/salgueiro.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -128,9 +154,12 @@ class HomePageState extends State<Viagem03Page> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addTwoHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/bonito');}
+                                        _audioPlayer.stop();
+                                         _playMusic2();
+                                        Navigator.pushNamed(context, '/bonito');}
                                    
                                 }, 
                                 child: Image.asset('assets/cidades/bonito.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -154,6 +183,7 @@ class HomePageState extends State<Viagem03Page> {
             MaterialButton(
                             
                 onPressed: () {
+                  _audioPlayer.stop();
                   Navigator.pushNamed(context, '/olinda');
                    
                 }, 

@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'time_provider.dart';
@@ -12,6 +13,25 @@ class Viagem04Page extends StatefulWidget{
 }
 
 class HomePageState extends State<Viagem04Page> {
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/auto01.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +58,7 @@ class HomePageState extends State<Viagem04Page> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -85,7 +106,15 @@ class HomePageState extends State<Viagem04Page> {
                   MaterialButton(
                              
                     onPressed: () {
-                     Navigator.of(context).pushReplacementNamed('/olinda');   
+                      context.read<TimeProvider>().addSevenHours();
+                                   if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/gameover'); 
+                                      } else {
+                                        _audioPlayer.stop();
+                                         _playMusic2();
+                                        Navigator.pushNamed(context, '/olinda');}
+                        
                     }, 
                     child: Image.asset('assets/cidades/olinda.png', fit: BoxFit.cover, width: 70, height: 50,), 
                   ),
@@ -103,9 +132,12 @@ class HomePageState extends State<Viagem04Page> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addSevenHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/recife');}
+                                        _audioPlayer.stop();
+                                         _playMusic2();
+                                        Navigator.pushNamed(context, '/recife');}
                                      
                                 }, 
                                 child: Image.asset('assets/cidades/recife.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -123,9 +155,12 @@ class HomePageState extends State<Viagem04Page> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addFiveHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/bonito');}
+                                        _audioPlayer.stop();
+                                         _playMusic2();
+                                        Navigator.pushNamed(context, '/bonito');}
                                       
                                 }, 
                                 child: Image.asset('assets/cidades/bonito.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -149,6 +184,7 @@ class HomePageState extends State<Viagem04Page> {
             MaterialButton(
                             
                 onPressed: () {
+                    _audioPlayer.stop();
                     Navigator.pushNamed(context, '/afogados');
                   
                 }, 

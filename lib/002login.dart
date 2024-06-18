@@ -15,11 +15,12 @@ String senha = '';
 
 AudioPlayer _audioPlayer = AudioPlayer();
 
-  @override
-  void initState() {
+@override
+void initState() {
     super.initState();
     _playMusic();
   }
+  
 
   void _playMusic() async {
     await _audioPlayer.play(AssetSource('sounds/maracatu.mp3'),volume: 155.0, balance: 100.0, );
@@ -85,11 +86,11 @@ Widget _body(){
                     ),
                 
                     onPressed: () {
-                      if(email == 'huan.lima@ufrpe.br' && 
-                          senha == 'ufrpe') {
-                        _stopMusic();
-                        _playMusic2();
-                        Navigator.of(context).pushReplacementNamed('/historia');
+                      if(email == '' && 
+                          senha == '') {
+
+                              _stopMusic();             
+                              Navigator.of(context).pushReplacementNamed('/historia');
                       } else {
                         print('e-mial ou senha inválidos');
                       }

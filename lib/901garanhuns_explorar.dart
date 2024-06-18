@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class GaranhunsExplorarPage extends StatefulWidget{
 
 class HomePageState extends State<GaranhunsExplorarPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +60,7 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -79,9 +100,11 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                                     onPressed: () {
                                       context.read<TimeProvider>().addThreeHours();
                                        if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                      Navigator.pushNamed(context, '/garanhuns_mosteiro');  }
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/garanhuns_mosteiro');  }
                                         
                                     }, 
                                     child: Image.asset('assets/imagens/09.garanhus.mosteiro.png', fit: BoxFit.cover, width: 180, height: 130,), 
@@ -104,9 +127,11 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                                 onPressed: () {
                                       context.read<TimeProvider>().addFourHours();
                                        if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                      Navigator.pushNamed(context, '/garanhuns_parque'); }
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/garanhuns_parque'); }
                                     
                                 }, 
                                 child: Image.asset('assets/imagens/09.garanhus.floresta.png', fit: BoxFit.cover, width: 180, height: 130,), 
@@ -125,9 +150,11 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                                 onPressed: () {
                                       context.read<TimeProvider>().addThreeHours();
                                        if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                      Navigator.pushNamed(context, '/garanhuns_castelo');}
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/garanhuns_castelo');}
                                      
                                 }, 
                                 child: Image.asset('assets/imagens/09.garanhus.castelo.png', fit: BoxFit.cover, width: 130, height: 90,), 
@@ -152,6 +179,7 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/viagem09');  
                                      
                                 }, 
@@ -169,6 +197,7 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/garanhuns');
                            
                                 }, 
@@ -185,6 +214,7 @@ class HomePageState extends State<GaranhunsExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/pitaco');
                                 
                                 }, 

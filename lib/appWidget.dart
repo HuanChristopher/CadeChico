@@ -39,6 +39,7 @@ import 'package:cadechico/601afogados_page.dart';
 import 'package:cadechico/602afogados_explorar.dart';
 import 'package:cadechico/603afogados_sitio.dart';
 import 'package:cadechico/604afogados_catedral.dart';
+import 'package:cadechico/604afogados_catedral2.dart';
 import 'package:cadechico/605afogados_vianao.dart';
 import 'package:cadechico/701caruaru_page.dart';
 import 'package:cadechico/702caruaru_explorar.dart';
@@ -56,7 +57,9 @@ import 'package:cadechico/901garanhuns_explorar.dart';
 import 'package:cadechico/902garanhuns_parque.dart';
 import 'package:cadechico/903garanhuns_castelo.dart';
 import 'package:cadechico/904garanhuns_mosteiro.dart';
+import 'package:cadechico/endGame.dart';
 import 'package:cadechico/gameover.dart';
+import 'package:cadechico/gameoverGood.dart';
 import 'package:cadechico/pitaco.dart';
 import 'package:cadechico/pitacoLista.dart';
 import 'package:cadechico/tutorial01.dart';
@@ -99,6 +102,7 @@ class AppWidget extends StatelessWidget{
           '/recife':          (context)  =>  RecifePage(),
           '/historia':        (context)  =>  HistoriaPage(), 
           '/gameover':        (context)  =>  GameOverPage(),
+          '/gameoverGood':    (context)  =>  GameOverGoodPage(),
           '/recifeExplorar':  (context)  =>  RecifeExplorarPage(),
           '/salgueiroExplorar':  (context)  =>  SalgueiroExplorarPage(),
           '/petrolinaExplorar':  (context)  =>  PetrolinaExplorarPage(),
@@ -106,6 +110,7 @@ class AppWidget extends StatelessWidget{
           '/afogadosExplorar':   (context)  =>  AfogadosExplorarPage(),
           '/caruaruExplorar':    (context)  =>  CaruaruExplorarPage(),
           '/vitoriaExplorar':    (context)  =>  VitoriaExplorarPage(),
+          '/endGame':            (context)  =>  endGamePage(),
           '/pitaco':             (context)  =>  pitacoPage(),
           '/pitacoLista':        (context)  =>  pitacoListaPage(),
           '/tutorial01':         (context)  =>  Tutorial01Page(),
@@ -156,6 +161,7 @@ class AppWidget extends StatelessWidget{
           '/vitoria_jacare':              (context)  =>  VitoriaJacarePage(),
           '/afogados_sitio':              (context)  =>  AfogadosSitioPage(),
           '/afogados_catedral':           (context)  =>  AfogadosCatedralPage(),
+          '/afogados_catedral2':           (context)  =>  AfogadosCatedral2Page(),
           '/afogados_vianao':             (context)  =>  AfogadosVianaoPage(),
           '/caruaru_feira':               (context)  =>  CaruaruFeiraPage(),
           '/caruaru_museu':               (context)  =>  CaruaruMuseuPage(),

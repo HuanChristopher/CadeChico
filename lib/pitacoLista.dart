@@ -1,4 +1,6 @@
 
+import 'package:audioplayers/audioplayers.dart';
+import 'package:cadechico/time_provider.dart';
 import 'package:flutter/material.dart';
 
 class pitacoListaPage extends StatefulWidget{
@@ -11,17 +13,51 @@ class pitacoListaPage extends StatefulWidget{
 
 class HomePageState extends State<pitacoListaPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
 
-  String? _selectedSexo;
-  String? _selectedProfissao;
-  String? _selectedCidade;
-  String? _selectedCaraceteristica;
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/maracatu.mp3'),volume: 55.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
+
+  static String? _selectedSexo;
+  static String? _selectedProfissao;
+  static String? _selectedCidade;
+  static String? _selectedCaraceteristica;
+
+  static final String _correctSexo = 'Mulher';
+  static final String _correctProfissao = 'Cantor(a)';
+  static final String _correctCidade = 'Itamaracá';
+  static final String _correctCaracteristica = 'Ciranda';
 
   final List<String> _sexos = ['Homem', 'Mulher'];
   final List<String> _profissoes = ['Cantor(a)', 'Jornalista', 'Escritor(a)', 'Ator(a)'];
   final List<String> _cidades = ['Recife','São Bento do Una', 'Itambé', 'João Pessoa(PB)', 'Olinda', 'Itamaracá'];
   final List<String> _caracteristicas = ['Cabelos brancos', 'Maratonista', 'Rubro-Negro', 'Teatro', 'Manguebeach' , 'Ciranda'];
 
+ void checkAnswer() {
+    if (_selectedSexo == _correctSexo && 
+    _selectedProfissao == _correctProfissao && 
+    _selectedCidade == _correctCidade && 
+    _selectedCaraceteristica == _correctCaracteristica) {
+      GlobalVariables.isEnd = true;
+    } else {
+      GlobalVariables.isEnd = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +185,7 @@ class HomePageState extends State<pitacoListaPage> {
                 MaterialButton(
                                 
                     onPressed: () {
-                     
+                     checkAnswer();
                      
                     }, 
                     child: Image.asset('assets/icones/megaphone.png', fit: BoxFit.cover, width: 50, height: 50,), 
@@ -166,6 +202,7 @@ class HomePageState extends State<pitacoListaPage> {
             MaterialButton(
                             
                 onPressed: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pop();
                  
                 }, 

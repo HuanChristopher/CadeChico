@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class OlindaExplorarPage extends StatefulWidget{
 
 class HomePageState extends State<OlindaExplorarPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +99,10 @@ class HomePageState extends State<OlindaExplorarPage> {
                                     onPressed: () {
                                       context.read<TimeProvider>().addThreeHours();
                                        if(GlobalVariables.isGameOver){
+                                        _stopMusic();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
+                                        _stopMusic();
                                       Navigator.pushNamed(context, '/olinda_homem');  }
                                           
                                     }, 
@@ -104,9 +126,11 @@ class HomePageState extends State<OlindaExplorarPage> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addTwoHours();
                                    if(GlobalVariables.isGameOver){
+                                         _stopMusic();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/olinda_quatro');  }
+                                           _stopMusic();
+                                          Navigator.pushNamed(context, '/olinda_quatro');  }
                               
                                 }, 
                                 child: Image.asset('assets/imagens/05.olinda.quatrocantos.png', fit: BoxFit.cover, width: 180, height: 130,), 
@@ -125,9 +149,11 @@ class HomePageState extends State<OlindaExplorarPage> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addTwoHours();
                                    if(GlobalVariables.isGameOver){
+                                       _stopMusic();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/olinda_farol');  }
+                                        _stopMusic();
+                                        Navigator.pushNamed(context, '/olinda_farol');  }
                             
                                 }, 
                                 child: Image.asset('assets/imagens/05.olinda.farol.png', fit: BoxFit.cover, width: 130, height: 90,), 
@@ -152,6 +178,7 @@ class HomePageState extends State<OlindaExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
+                                  _stopMusic();
                                   Navigator.pushNamed(context, '/viagem03'); 
                                 
                                 }, 
@@ -169,6 +196,7 @@ class HomePageState extends State<OlindaExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
+                                  _stopMusic();
                                    Navigator.pushNamed(context, '/olinda'); 
                               
                                 }, 
@@ -185,6 +213,7 @@ class HomePageState extends State<OlindaExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
+                                   _stopMusic();
                                     Navigator.pushNamed(context, '/pitaco'); 
                                     
                                 }, 

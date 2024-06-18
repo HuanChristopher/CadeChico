@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
 import 'time_provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 
 class RecifePage extends StatefulWidget{
@@ -15,6 +16,26 @@ class RecifePage extends StatefulWidget{
 
 class HomePageState extends State<RecifePage> {
   int counter = 0;
+
+AudioPlayer _audioPlayer = AudioPlayer();
+
+ @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/maracatu.mp3'),volume: 55.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   /*DateTime _dateTime = DateTime(2022, 1, 3, 9, 0); // Segunda-feira, 9:00 AM
 
@@ -68,6 +89,7 @@ class HomePageState extends State<RecifePage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -132,6 +154,7 @@ class HomePageState extends State<RecifePage> {
                   MaterialButton(
                                 
                                 onPressed: () {
+                                     _audioPlayer.stop();
                                      Navigator.pushNamed(context, '/viagem01');  
                                      //Navigator.of(context).pushReplacementNamed('/viagem01');    
                                 }, 
@@ -151,8 +174,7 @@ class HomePageState extends State<RecifePage> {
                  
                   ElevatedButton(
                       onPressed: () {
-                          //Navigator.of(context).pushReplacementNamed('/recifeExplorar'); 
-                          //context.read<TimeProvider>().addThreeHours();
+                          _audioPlayer.stop();
                           Navigator.pushNamed(context, '/recifeExplorar');  
                         
                       }, 
@@ -169,8 +191,9 @@ class HomePageState extends State<RecifePage> {
                   MaterialButton(
                                
                                 onPressed: () {
+                                    _audioPlayer.stop();
                                     Navigator.pushNamed(context, '/pitaco');  
-                                    //Navigator.of(context).pushReplacementNamed('/pitaco');   
+                              
                                 }, 
                                 child: Image.asset('assets/icones/comment.png', fit: BoxFit.cover, width: 50, height: 50,), 
                               ),

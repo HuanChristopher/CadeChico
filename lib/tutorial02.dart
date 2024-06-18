@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'time_provider.dart';
@@ -13,6 +14,27 @@ class Tutorial02Page extends StatefulWidget{
 }
 
 class HomePageState extends State<Tutorial02Page> {
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+  
+ 
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 55.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
   
 
   @override
@@ -40,6 +62,7 @@ class HomePageState extends State<Tutorial02Page> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -49,7 +72,7 @@ class HomePageState extends State<Tutorial02Page> {
       ),
       
       appBar: AppBar(
-        title: Text('RECIFE', style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255), fontWeight: FontWeight.bold)), 
+        title: Text('TUTORIAL', style: TextStyle(fontSize: 30,color: Color.fromARGB(255, 31, 100, 255), fontWeight: FontWeight.bold)), 
         
       ),
 
@@ -82,7 +105,7 @@ class HomePageState extends State<Tutorial02Page> {
                             ),
                         
                             onPressed: () {
-            
+                                _stopMusic();
                                 Navigator.of(context).pushReplacementNamed('/tutorial03');   
                             }, 
                             child: Text('CONTINUAR'), 

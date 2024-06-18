@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class GlobalVariables {
   static bool isGameOver = false;
+  static bool isEnd = false;
 }
 
 
@@ -14,6 +15,7 @@ class TimeProvider with ChangeNotifier {
   void zeroGame() {
 
     GlobalVariables.isGameOver = false;
+    GlobalVariables.isEnd = false;
     _dateTime = DateTime(2022, 1, 3, 9, 0);
   }
 

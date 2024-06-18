@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class AfogadosVianaoPage extends StatefulWidget{
 
 class HomePageState extends State<AfogadosVianaoPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/dentrocidades.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +60,7 @@ class HomePageState extends State<AfogadosVianaoPage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -97,6 +118,7 @@ class HomePageState extends State<AfogadosVianaoPage> {
                   MaterialButton(
                              
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/viagem04');  
 
                                 }, 
@@ -114,6 +136,7 @@ class HomePageState extends State<AfogadosVianaoPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/afogadosExplorar');  
                                    
                                 }, 
@@ -130,6 +153,7 @@ class HomePageState extends State<AfogadosVianaoPage> {
                   MaterialButton(
                                
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/pitaco');  
                                    
                                 }, 

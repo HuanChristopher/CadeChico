@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class PetrolinaExplorarPage extends StatefulWidget{
 
 class HomePageState extends State<PetrolinaExplorarPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/intro.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +60,7 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -77,11 +98,14 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                 MaterialButton(
                                  
                                     onPressed: () {
+                                      
                                       context.read<TimeProvider>().addTwoHours();
                                       
                                       if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/petrolina_museu'); 
                                       }
 
@@ -108,9 +132,11 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addTwoHours();
                                    if(GlobalVariables.isGameOver){
+                                    _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/petrolina_catedral'); }
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/petrolina_catedral'); }
                                 }, 
                                 child: Image.asset('assets/imagens/04.petrolina.catedral.png', fit: BoxFit.cover, width: 180, height: 130,), 
                               ),
@@ -128,9 +154,11 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addFourHours();
                                    if(GlobalVariables.isGameOver){
+                                       _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/petrolina_carrancas');}
+                                        _audioPlayer.stop();
+                                        Navigator.pushNamed(context, '/petrolina_carrancas');}
                                 
                                 }, 
                                 child: Image.asset('assets/imagens/04.petrolina.carrancas.png', fit: BoxFit.cover, width: 130, height: 90,), 
@@ -155,6 +183,7 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                   ElevatedButton(
                              
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/viagem06');  
                                    
                                 }, 
@@ -172,6 +201,7 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                   ElevatedButton(
                                 
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                   Navigator.pushNamed(context, '/petrolina'); 
                                 
                                 }, 
@@ -188,6 +218,7 @@ class HomePageState extends State<PetrolinaExplorarPage> {
                   ElevatedButton(
                                
                                 onPressed: () {
+                                  _audioPlayer.stop();
                                    Navigator.pushNamed(context, '/pitaco'); 
                                 
                                 }, 

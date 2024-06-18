@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'time_provider.dart';
@@ -12,6 +13,25 @@ class Viagem07Page extends StatefulWidget{
 }
 
 class HomePageState extends State<Viagem07Page> {
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/auto01.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +58,7 @@ class HomePageState extends State<Viagem07Page> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _audioPlayer.stop();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -87,9 +108,12 @@ class HomePageState extends State<Viagem07Page> {
                     onPressed: () {
                       context.read<TimeProvider>().addNineHours();
                        if(GlobalVariables.isGameOver){
-                                        Navigator.pushNamed(context, '/gameover'); 
-                                      } else {
-                      Navigator.pushNamed(context, '/petrolina');}
+                             _audioPlayer.stop();
+                             Navigator.pushNamed(context, '/gameover'); 
+                           } else {
+                            _audioPlayer.stop();
+                             _playMusic2();
+                            Navigator.pushNamed(context, '/petrolina');}
                  
                     }, 
                     child: Image.asset('assets/cidades/petrolina.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -108,9 +132,12 @@ class HomePageState extends State<Viagem07Page> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addThreeHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/garanhuns');}
+                                        _audioPlayer.stop();
+                                         _playMusic2();
+                                        Navigator.pushNamed(context, '/garanhuns');}
                                   
                                 }, 
                                 child: Image.asset('assets/cidades/garanhuns.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -128,9 +155,12 @@ class HomePageState extends State<Viagem07Page> {
                                 onPressed: () {
                                   context.read<TimeProvider>().addSixHours();
                                    if(GlobalVariables.isGameOver){
+                                        _audioPlayer.stop();
                                         Navigator.pushNamed(context, '/gameover'); 
                                       } else {
-                                  Navigator.pushNamed(context, '/salgueiro');}
+                                         _audioPlayer.stop();
+                                          _playMusic2();
+                                         Navigator.pushNamed(context, '/salgueiro');}
                                
                                 }, 
                                 child: Image.asset('assets/cidades/salgueiro.png', fit: BoxFit.cover, width: 70, height: 50,), 
@@ -154,6 +184,7 @@ class HomePageState extends State<Viagem07Page> {
             MaterialButton(
                             
                 onPressed: () {
+                    _audioPlayer.stop();
                     Navigator.pushNamed(context, '/vitoria');
                
                 }, 

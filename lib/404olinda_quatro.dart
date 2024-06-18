@@ -1,4 +1,5 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:cadechico/app_controller.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,25 @@ class OlindaQuatroPage extends StatefulWidget{
 
 class HomePageState extends State<OlindaQuatroPage> {
   int counter = 0;
+  AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _playMusic();
+  }
+
+  void _playMusic() async {
+    await _audioPlayer.play(AssetSource('sounds/dentrocidades.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+  void _playMusic2() async {
+    await _audioPlayer.play(AssetSource('sounds/plim.mp3'),volume: 155.0, balance: 100.0, );
+  }
+
+ void _stopMusic() async {
+    await _audioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +60,7 @@ class HomePageState extends State<OlindaQuatroPage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Sair'),
                 onTap: () {
+                  _stopMusic();
                   Navigator.of(context).pushReplacementNamed('/login');
                 }
               )
@@ -96,6 +117,7 @@ class HomePageState extends State<OlindaQuatroPage> {
                   MaterialButton(
                              
                                 onPressed: () {
+                                  _stopMusic();
                                   Navigator.pushNamed(context, '/viagem03'); 
                                      
                                 }, 
@@ -113,6 +135,7 @@ class HomePageState extends State<OlindaQuatroPage> {
                   MaterialButton(
                                 
                                 onPressed: () {
+                                  _stopMusic();
                                     Navigator.pushNamed(context, '/olindaExplorar'); 
                                      
                                 }, 
@@ -129,6 +152,7 @@ class HomePageState extends State<OlindaQuatroPage> {
                   MaterialButton(
                                
                                 onPressed: () {
+                                  _stopMusic();
                                    Navigator.pushNamed(context, '/pitaco'); 
                                      
                                 }, 

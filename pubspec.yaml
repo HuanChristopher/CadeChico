@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+version: 2.0.0+1
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -39,6 +39,7 @@ dependencies:
   audioplayers: ^6.0.0
   video_player: ^2.8.6
   provider: ^6.0.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -77,12 +78,15 @@ flutter:
      - assets/imagens/logocade2.png
      - assets/imagens/logocade3.png
      - assets/imagens/huan.jpg
+     - assets/imagens/gameover2.png
+     - assets/imagens/gameover3.png
      - assets/icones/megaphone.png
      - assets/imagens/backgroundAzul.jpg
      - assets/imagens/backgroundVerde.jpg
      - assets/imagens/chicoHistoria.png
      - assets/imagens/logo001.png
      - assets/imagens/tutorial01.png
+     - assets/imagens/finaloculos.png
      - assets/imagens/02.bonito_cachoeira01.png
      - assets/imagens/02.bonito_cachoeira02.png
      - assets/imagens/02.bonito_capela01.png
@@ -181,8 +185,19 @@ flutter:
      - assets/personalidades/chico.jpg
      - assets/sounds/maracatu_atomico.mp3
      - assets/sounds/maracatu_atomico2.mp3
+     - assets/sounds/0611.mp3
      - assets/sounds/maracatu.mp3
      - assets/sounds/plim.mp3
+     - assets/sounds/intro.mp3
+     - assets/sounds/intro01.mp3
+     - assets/sounds/auto.mp3
+     - assets/sounds/auto01.mp3
+     - assets/sounds/LaBelledeJour.mp3
+     - assets/sounds/LuaCiranda.mp3
+     - assets/sounds/oxemainha.mp3
+     - assets/sounds/apraieira.mp3
+     - assets/sounds/dentrocidades.mp3
+     - assets/sounds/acidade.mp3
    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
